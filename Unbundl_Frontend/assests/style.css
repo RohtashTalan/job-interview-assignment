@@ -1,0 +1,351 @@
+body{
+    padding: 0;
+    margin: 0;
+
+}
+
+
+
+/* section .image-slideshow */
+
+.image-slideshow{
+position: relative;
+}
+.image-slideshow__images--home{
+    width: 100%;
+    display: none;
+    height: 750px;
+}
+.image-slideshow__images--home:first-child{
+    display: block;
+}
+
+.image-slideshow__btns{
+    position: absolute;
+    top:50%;
+    width: 100%;
+    transform: translate(0,-50%);
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+}
+.image-slideshow__btn{
+    background: #e5e5ee;
+    margin: 0 24px;
+    border: 2;
+    border-radius: 50%;
+    padding: 4px;
+    cursor: pointer;
+}
+.image-slideshow__btn--prev{
+    visibility:hidden;
+}
+
+
+/* section brew benefits */
+.brew-benefits{
+    padding: 3rem 5rem;
+    align-items: center;
+    margin: auto;
+}
+
+.brew-benefits__text--heading{
+    font-size: 40px;
+}
+.brew-benefits__text--highlight{
+    text-align: center;
+    background: #fdb425;
+    padding: 0 8px;
+    margin: 0 5px;
+    border-radius: 2px;
+}
+
+.brew-benefits__benfits{
+    display: flex;
+    justify-content: space-between;
+    /* overflow: auto; */
+}
+.brew-benefits__benfits_benefit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+}
+.brew-benefits__benfits_benefit > svg{
+    width: 180%;
+}
+
+
+/* section herb-brews */
+
+.herb-brews{
+    padding: 3rem 5rem;
+    align-items: center;
+    margin: auto;
+}
+.herb-brews_section{
+    display: flex;
+    justify-content: space-between;
+    justify-items: flex-end;
+    width: 100%;
+    height:max-content;
+}
+
+.herb-brews__section__left{
+    width: 40%;
+    padding: 2px 8px;
+    margin:0 10px;
+}
+
+.herb-brews__section__left--text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.herb-brews__section__left--image{
+width: 100%;
+}
+
+.herb-brews__section__left--link{
+    color: #696868;
+    font-size: 16px;
+}
+.herb-brews__section__left--link:hover{
+    text-decoration: none;
+}
+
+.herb-brews__section__right{
+    width: 60%;
+    margin: 0 10px;
+}
+.herb-brews__section__right__product-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+/* Card Styling */
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 2px 12px;
+    min-width:32%;
+    margin: 0 5px;
+   
+}
+
+.card__image{
+    width: 100%;
+    border-radius: 8px;
+}
+.card__heading{
+    margin-bottom: 2px;
+    font-size: 14px;
+    
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card__description p:first-child{
+    font-size: 12px;
+    font-weight:300;
+    color: #696868;
+    margin: 0;
+    max-width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.card__description__price{
+    font-weight: 800;
+    font-size: 16px;
+    margin: 0;
+}
+.card_wrap{
+    display: flex;
+    flex-direction: row;
+    font-size: small;
+    font-size: 10px;
+    flex-wrap: wrap;
+}
+.icon_block{
+    width: 40%;
+    margin: 5px;
+    display: flex;
+}
+.icon_block svg{
+    width: 200%;
+}
+.icon_block h4{
+    font-weight: 300;
+    font-size: 10px;
+    text-align: center;
+    overflow-wrap: break-word;
+    max-width: 65%!important;
+}
+
+.card__cart__btn{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 10px;
+    color: #696868;
+    text-decoration: none;
+}
+
+
+
+/* super-taste__section  */
+.super-taste{
+    padding: 3rem 5rem;
+    align-items: center;
+    margin: auto;
+    position: relative;
+}
+.super-taste__section{
+    padding: 0 20px;
+    border-radius: 8px;
+    background-color: #c6c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.super-taste__left{
+    text-align: left;
+    padding: 16px;
+    width: 60%;
+}
+
+.super-taste__left__heading{
+    font-size: 32px;
+}
+.super-taste__left__link{
+    color: #696868;
+}
+.super-taste__left__link:hover{
+    text-decoration: none;
+}
+
+.super-taste__right__image{
+    width: 90%;
+    margin:  -4px;
+}
+
+.super-taste__star{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 50%;
+    transform: translateY(-25%);
+
+}
+
+.super-taste__star > svg{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+   .image-slideshow__images--home{
+    height: 300px;
+   }
+
+   .brew-benefits{
+    padding: 2rem;
+    align-items: center;
+    margin: auto;
+}
+
+.brew-benefits__text--heading{
+    font-size: 24px;
+}
+
+.herb-brews{
+    padding: 1rem;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.herb-brews_section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.herb-brews__section__left{
+    width: 100%;
+    padding: 2px 8px;
+    margin: 10px;
+}
+
+.herb-brews__section__left--text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.herb-brews__section__left--image{
+width: 100%;
+}
+
+.herb-brews__section__right{
+    width: 100%;
+    margin: 10px 0;
+}
+.super-taste{
+    padding: 0;
+    align-items: center;
+    margin: auto;
+    position: relative;
+}
+.super-taste__section{
+    padding: 0;
+    border-radius: 8px;
+    flex-wrap: wrap-reverse;
+}
+.super-taste__left{
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.super-taste__left__heading{
+    font-size: 20px;
+}
+.super-taste__left__link{
+    color: #696868;
+}
+.super-taste__left__link:hover{
+    text-decoration: none;
+}
+
+.super-taste__right__image{
+    border-radius: 0 0 50% 50%;
+    width: 101%;
+    background-color: #dbdbdb;
+}
+
+
+.super-taste__star{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 60%;
+    transform: translateY(-50%);
+
+}
+  }
