@@ -7,18 +7,17 @@ import axios from 'axios';
 const LoginUser = () =>{
     const navigate = useNavigate();
     const [user, setUser] = useState();
+    const [loginError, setLoginError]=useState();
 
     const signInUser = async () => {
-
-      
 try {
-  const signIn = await axios.post('/api/v1/users/login', user);
+  await axios.post('/api/v1/users/login', user);
   navigate('/')
-        
-      } catch (error) {
+} catch (error) {
+        setLoginError(error.response.data);
         console.log(error.message);
-        
-      }}
+      }
+  }
 
     
 
@@ -53,6 +52,7 @@ try {
                     id="email"
                     name="email"
                     type="email"
+                    onFocus={()=>{setLoginError('')}}
                     autoComplete
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
@@ -72,7 +72,7 @@ try {
                     id="password"
                     name="password"
                     type="password"
-
+                    onFocus={()=>{setLoginError('')}}
                     autoComplete
 
                     required
@@ -82,16 +82,11 @@ try {
                 </div>
               </div>
 
-              {/* <div className="flex items-center justify-between">
-                <div className="text-sm">
-                  <a
-                    href="/signup"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Don't have Account, Sign Up
-                  </a>
+              <div className="flex items-center justify-between">
+                <div className="text-xl text-red-500">
+                  {loginError && loginError.message}
                 </div>
-              </div> */}
+              </div>
 
               <div>
                 <button

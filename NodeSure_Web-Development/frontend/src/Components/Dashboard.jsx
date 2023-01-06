@@ -29,9 +29,6 @@ return(
         <nav className="bg-gray-900 text-white p-4">
             <div className="flex justify-between text-3xl">
             <div>Logo</div>
-
-            {/* <div><i className="fa-solid fa-user bg-gray-700 p-2 rounded-lg"></i>  {userDetails && userDetails.name+ '  '} 
-                </div> */}
             </div>
         </nav>
     </header>
@@ -60,7 +57,7 @@ return(
         </footer>
     </div>
     ):(<div className="font-bold text-blue-700 bg-gray-200 w-screen h-screen flex">
-        <a href="/" className="text-center mx-auto p-12">SignIn First</a>
+        <a href="/login" className="text-center mx-auto p-12">SignIn First</a>
     </div>)
 
 }
