@@ -60,6 +60,7 @@ export const signIn = asyncHandler( async (req, res, next)=>{
     // }
 
     if (!user) {
+        res.cookie("token",'',{expires: new Date(Date.now())})
         throw new CustomError('User not Found', 401)
     }
     const token = user.getJwtToken();
