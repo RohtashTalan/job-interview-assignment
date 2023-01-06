@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Jwt  from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import config from '../config';
+import config from '../config/index.js';
 
 
 
