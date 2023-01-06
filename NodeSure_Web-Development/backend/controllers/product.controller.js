@@ -1,0 +1,1 @@
+import Product from '../schema/product.schema.js'

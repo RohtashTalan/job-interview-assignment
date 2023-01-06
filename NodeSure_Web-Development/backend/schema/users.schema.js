@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -47,4 +48,4 @@ userSchema.methods = {
 }
 
 
-export default mongoose.model(User, userSchema);
+export default mongoose.model('User', userSchema);
