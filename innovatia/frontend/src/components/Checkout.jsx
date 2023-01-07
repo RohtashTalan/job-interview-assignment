@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "./header";
 
 
 
@@ -20,21 +21,7 @@ return(
     <>
 {userDetails ? (
 <div className="bg-gray-200 h-screen">
-    {/* Header  */}
-    <header className="h-18">
-        <nav className="bg-gray-900 text-white p-4">
-            <div className="flex justify-between text-3xl">
-            <div>Logo</div>
-
-             <div><i className="fa-solid fa-user bg-gray-700 p-2 rounded-lg"></i> 
-             {/* {username}  */}
-            <i onClick={()=>{signOutUser()}}  className="fa-solid fa-right-from-bracket bg-red-700 p-2 rounded-lg hover:cursor-pointer" title="Click to Sign Out"></i>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
+<Header/>
      {/* Footer  */}
      <footer className="bg-gray-900 p-4 w-full h-16">
             <div>
