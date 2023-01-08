@@ -45,12 +45,12 @@ const Products = () =>{
       </div>
       <div className="flex justify-center items-center px-2 pb-2">
         <div className="w-1/2 p-2">
-        <button className="block w-full bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium" onClick={()=>dispatch(removeFromCart(i))}>
+        <button className="block w-full bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium" onClick={()=>dispatch(removeFromCart(item._id))}>
            Remove from cart
           </button>
         </div>
         <div className="w-1/2 p-2">
-          <button className="block w-full bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium" onClick={()=>dispatch(addToCart(i))}>
+          <button className="block w-full bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium" onClick={()=>dispatch(addToCart(item._id))}>
             Add to cart
           </button>
         </div>

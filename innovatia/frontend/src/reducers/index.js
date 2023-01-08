@@ -1,10 +1,10 @@
-import updateTheCart from "./cart";
+import UpdateTheCart from "./cart";
 import { combineReducers } from "redux";
 
 
 
 const rootReducer = combineReducers({
-    updateTheCart
+    UpdateTheCart
 })
 
 

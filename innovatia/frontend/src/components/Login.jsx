@@ -1,3 +1,4 @@
+import axios from "axios";
 import React ,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -5,14 +6,18 @@ import { useNavigate } from "react-router-dom";
 
 const LoginUser = () =>{
     const [user, setUser] = useState();
+    const navigate = useNavigate();
 
     const signInUser = async () => {
+      const response = await axios.post('/api/v1/user/signin',user);
+      if(response.status === 200) {
+        navigate("/");
 
+      }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const username = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 

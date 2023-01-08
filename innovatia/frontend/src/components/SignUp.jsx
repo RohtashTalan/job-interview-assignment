@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const SignUpUser = () =>{
-
+const navigate = useNavigate();
     const [user, setUser] = useState();
 
     const signUp = async () => {
-      
+      const newUser = await axios.post("/api/v1/user/signup",user);
+      if(newUser.status === 200){
+        
+      }else{console.log(newUser);}
+
     }
 
     const handleSubmit = (e) => {

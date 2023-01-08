@@ -16,3 +16,21 @@ export const getProducts = asyncHandler(async(req, res, next) => {
     })
 
 })
+
+// add product to cart
+export const addProduct = asyncHandler( async(req, res, next) => {
+    const productId = req.params.productId;
+    const userId = req.user._id;
+
+    const addIntoCart = await Cart.create({user:userId, productArray:[{productId, count:1}]})
+    
+
+
+})
+// remove product to cart
+export const removeProduct = asyncHandler( async(req, res, next) => {
+    const productId = req.params.productId;
+    const userId = req.user._id;
+    const addIntoCart = await Cart.create({user:userId, productArray:[{productId, count:1}]})
+
+})

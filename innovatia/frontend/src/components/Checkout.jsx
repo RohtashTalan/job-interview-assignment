@@ -1,25 +1,17 @@
 import React, {useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
+import { useSelector } from "react-redux";
 
 
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
-    const [userDetails, setUserDetails] = useState();
+    const cartItems = useSelector((state) => state.updateTheCart);
 
-    
-    const signOutUser = async() =>{
-        navigate("/");
-    } 
-    
-    useEffect(() => {
-
-    }, []);
 
 return(
     <>
-{userDetails ? (
 <div className="bg-gray-200 h-screen">
 <Header/>
      {/* Footer  */}
@@ -29,11 +21,7 @@ return(
             </div>
         </footer>
     </div>
-    ):(<div className="font-bold text-blue-700 bg-gray-200 w-screen h-screen flex">
-        <a href="/" className="text-center mx-auto p-12">SignIn First</a>
-    </div>)
-
-}
+    
 </>
 )
 }

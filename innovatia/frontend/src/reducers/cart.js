@@ -9,7 +9,6 @@ const updateTheCart = (state = initialState, action) => {
     case "REMOVE_FROM_CART": {
       if (state <= 0) {return 0;}
       return state - 1;
-
     }
     default:
       return state;

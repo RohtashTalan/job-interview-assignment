@@ -1,7 +1,8 @@
 import User from '../schema/users.schema.js';
 import CustomError from '../utils/customError.js';
 import asyncHandler from '../utils/asyncHandler.js';
-
+import  Jwt from "jsonwebtoken";
+import config from "../config/index.js";
 
 // SignUP Controller
 export const signUp = asyncHandler(async (req, res, next)=>{
@@ -77,6 +78,41 @@ export const signIn = asyncHandler( async (req, res, next)=>{
      success:true,
      token,
      user
+    });
+
+})
+
+
+// signout Controller
+export const signOut = asyncHandler( async (req, res, next)=>{
+   
+    res.status(200).cookie("token", '', {expires: new Date(Date.now())}).json({
+     success:true,
+     message: "user Sign Out Successfully"
+    });
+
+})
+
+
+// isUserLoggedIn Controller
+export const isUserLoggedIn = asyncHandler( async (req, res, next)=>{
+
+    let token = req.cookies.token || req.header("Authorization");
+
+    if (!token){ 
+        res.status(401).json({
+            success:true,
+            message: "no user"
+           });
+        return;
+    }
+
+    const decoded = Jwt.verify(token, config.JWT_TOKEN);
+    let response = await User.findById(decoded._id);
+   
+    res.status(200).json({
+     success:true,
+     user: response.name
     });
 
 })
