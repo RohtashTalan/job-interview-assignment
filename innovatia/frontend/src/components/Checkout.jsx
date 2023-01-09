@@ -12,21 +12,23 @@ const CheckoutPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [products, setProducts] = useState();
+    const cartItems = useSelector((state) => state.UpdateTheCart);
     
     const person =  useSelector((state) => state.UserStatus);
     person.then((Name)=> setUser(Name));
 
     const getAllProducts = async() => {
-        const {data} = await axios.get('/api/v1/product');
-        if(data.products){
-        setProducts(data.products)
+        const {data} = await axios.get('/api/v1/cart');
+        console.log(data);
+        if(data.productArray){
+        setProducts(data.productArray)
         }
     }
     // console.log(user);
 
     useEffect(()=>{
         getAllProducts();
-    },[])
+    },[cartItems])
 
 
 let totalPrice = 0;
@@ -55,7 +57,7 @@ return(
 <div className="w-2/3 flex flex-wrap justify-center items-center mt-16">
     {products && products.map((item,i)=>(
         <>
-    <div className="w-full h-auto p-2 mx-4" key={item._id}>
+    <div className="w-full h-auto p-2 mx-4" key={item.productId}>
     <div className="bg-white shadow-lg hover:shadow-xl rounded-lg flex">
       <div className="bg-gray-400 h-64 w-64 rounded-lg p-2 bg-no-repeat bg-center bg-cover align-center">
         <img src={item.thumbnail} className="w-full h-full rounded-md"/>
@@ -74,10 +76,9 @@ return(
         </div>
         <div className="p-4">
           <div className="flex gap-4 items-center font-semibold text-lg font-poppins">
-            <button className="bg-gray-400 text-white text-2xl py-2 px-4 rounded-md">-</button>
-            <span className="text-teal-500 font-semibold text-lg font-poppins">{0}</span>
-            <button className="bg-gray-400 text-white text-2xl py-2 px-4 rounded-md">+</button>
-          
+            <button className="bg-gray-400 text-white text-2xl py-2 px-4 rounded-md" onClick={()=>{dispatch(removeFromCart(item.productId))}}>-</button>
+            <span className="text-teal-500 font-semibold text-lg font-poppins">{item.count}</span>
+            <button className="bg-gray-400 text-white text-2xl py-2 px-4 rounded-md" onClick={()=>{dispatch(addToCart(item.productId))}}>+</button>
           </div>
         </div>
       </div>
