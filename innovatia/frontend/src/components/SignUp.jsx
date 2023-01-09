@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./header";
+import { useDispatch } from "react-redux";
+import { userSignUp } from "../actions";
 
 
 const SignUpUser = () =>{
 const navigate = useNavigate();
+const dispatch = useDispatch();
     const [user, setUser] = useState();
 
     const signUp = async () => {
-      const newUser = await axios.post("/api/v1/user/signup",user);
-      if(newUser.status === 200){
-        
-      }else{console.log(newUser);}
-
+      await dispatch(userSignUp(user));
+        navigate("/");
     }
 
     const handleSubmit = (e) => {
@@ -22,7 +22,6 @@ const navigate = useNavigate();
         const name = document.getElementById('name').value;
         const username = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
         setUser({ name, username, password })
         signUp();
     }

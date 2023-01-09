@@ -3,20 +3,17 @@ import React ,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./header";
 import { useDispatch, useSelector } from "react-redux";
+import { userSignIn } from "../actions";
 
 
 
 const LoginUser = () =>{
     const [user, setUser] = useState();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
     const signInUser = async () => {
-      const response = await axios.post('/api/v1/user/signin',user);
-      if(response.status === 200) {
-        navigate("/");
-
-      }
+        dispatch(userSignIn(user));
     }
 
     const handleSubmit = (e) => {

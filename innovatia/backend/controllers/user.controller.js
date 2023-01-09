@@ -34,8 +34,7 @@ export const signUp = asyncHandler(async (req, res, next)=>{
   
     res.status(200).cookie("token", token, options).json({
      success:true,
-     token,
-     createUser
+     user: createUser.name
     });
 
 })
@@ -75,10 +74,9 @@ export const signIn = asyncHandler( async (req, res, next)=>{
     user.password=null;
   
     res.status(200).cookie("token", token, options).json({
-     success:true,
-     token,
-     user
-    });
+        success:true,
+        user: user.name
+       });
 
 })
 
