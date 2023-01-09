@@ -27,7 +27,7 @@ const Products = () =>{
 <div className="flex flex-wrap justify-center items-center min-h-screen bg-gray-100 mt-16">
     {products && products.map((item,i)=>(
         <>
-    <div className="w-full h-auto md:w-1/3 p-2" key={i}>
+    <div className="w-full h-auto md:w-1/3 p-2" key={item._id}>
     <div className="bg-white shadow-lg hover:shadow-xl rounded-lg ">
       <div className="bg-gray-400 h-64 w-full rounded-t-lg p-4 bg-no-repeat bg-center bg-cover align-center">
         <img src={item.thumbnail} className="w-full h-full rounded-md"/>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "./header";
 
 
 const SignUpUser = () =>{
@@ -26,6 +27,7 @@ const navigate = useNavigate();
         signUp();
     }
     return(<>
+    <Header />
         <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">Sign up</div>
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

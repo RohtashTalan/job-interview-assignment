@@ -9,3 +9,9 @@ export const removeFromCart = (productId) => {
         type: "REMOVE_FROM_CART",
         payload: productId
 }}
+
+
+export const userSignOut = () => {
+    return { 
+        type: "SIGN_OUT_USER"
+}}

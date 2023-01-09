@@ -1,39 +1,34 @@
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import React, {useState} from "react";
+import { userSignOut } from "../actions/index.js";
+import { useEffect } from "react";
 
 
 const Header = () =>{
+    
     const [user, setUser] = useState('Guest');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
 
     const cartItems = useSelector((state) => state.UpdateTheCart);
+   const person =  useSelector((state) => state.UserStatus);
+   person.then((Name)=> setUser(Name));
 
-const isLoggedIn = async () => {
-    const response = await axios.get("/api/v1/user/isloggedin");
-    console.log(response);
-        if(response.status === 200){setUser(response.data.user)}
-}
-
-    const signOut = async () =>{
-        const response = await axios.get("/api/v1/user/signout");
-        if(response.status === 200){setUser('Guest')}
-    }
-
-useEffect(()=>{
-    isLoggedIn();
-},[user])
+   
 
     return (<header className="h-18 fixed w-full top-0">
     <nav className="bg-gray-900 text-white p-4">
         <div className="flex justify-between text-3xl">
-        <div>Logo</div>
+            <div>
+       <a  onClick={()=>{navigate('/')}} >Logo </a>
+        </div>
 
          <div className="flex justify-center items-center">
         <div className="text-gray-400 w-auto mx-auto">
-        <span><i class="fa-solid fa-user mx-1" onClick={()=>{signOut()}}></i>{user}</span>
-        {user == 'Guest'? (<i class="fa-solid fa-right-to-bracket mx-3 hover:cursor-pointer" title="Click to Login" onClick={()=>{navigate('/login')}}></i>):(<i className="fa-solid fa-right-from-bracket mx-3 hover:cursor-pointer" title="Click to Log out" onClick={()=>{signOut()}}></i>)}
+        <span><i class="fa-solid fa-user mx-1"></i>{user}</span>
+        {user === 'Guest'? (<i className="fa-solid fa-right-to-bracket mx-3 hover:cursor-pointer" title="Click to Login" onClick={()=>{navigate('/login')}}></i>):(<i className="fa-solid fa-right-from-bracket mx-3 hover:cursor-pointer" title="Click to Log out" onClick={()=>{dispatch(userSignOut())}}></i>)}
          
          </div>
             <i className="fa-solid fa-cart-shopping" onClick={()=>{navigate('/checkout')}}>

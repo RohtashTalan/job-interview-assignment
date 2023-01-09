@@ -1,12 +1,15 @@
 import axios from "axios";
 import React ,{useState} from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "./header";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 const LoginUser = () =>{
     const [user, setUser] = useState();
     const navigate = useNavigate();
+
 
     const signInUser = async () => {
       const response = await axios.post('/api/v1/user/signin',user);
@@ -20,7 +23,6 @@ const LoginUser = () =>{
         e.preventDefault();
         const username = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-
         setUser({username, password })
         signInUser();
     }
@@ -30,7 +32,8 @@ const LoginUser = () =>{
 
     return(
     <>
-      <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <Header />
+      <div className="min-h-full  my-10 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="text-center font-bold text-2xl">Log in</div>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
