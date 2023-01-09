@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./header";
-import { useDispatch } from "react-redux";
-import { userSignUp } from "../actions";
 
 
 const SignUpUser = () =>{
-const navigate = useNavigate();
-const dispatch = useDispatch();
     const [user, setUser] = useState();
 
     const signUp = async () => {
-      await dispatch(userSignUp(user));
-        navigate("/");
+      const response = await axios.post("/api/v1/user/signup", user);
+      console.log(response);
+      if(response.status === 200){
+        window.location.pathname='/';
+      }
     }
 
     const handleSubmit = (e) => {
