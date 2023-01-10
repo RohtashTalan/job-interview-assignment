@@ -83,7 +83,14 @@ export const removeProduct = asyncHandler(async (req, res, next) => {
     const addIntoCart = await Cart.create({ user: userId });
   } else {
     let newArray = isCart.productArray.filter((item) => {
-      return item.productId != productId;
+      if(item.count > 1 && item.productId == productId){
+        item.count -= 1;
+        return item;
+      } else if(item.count == 1 && item.productId == productId){
+        return item.productId != productId;
+      } else{
+        return item;
+      }
     });
 
     isCart.productArray = newArray;

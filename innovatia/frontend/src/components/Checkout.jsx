@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Header from "./header";
-import { addToCart, removeFromCart } from "../actions/index.js";
+import { addToCart, removeFromCart, cartItemCount } from "../actions/index.js";
 
 
 
@@ -18,13 +18,19 @@ const CheckoutPage = () => {
     person.then((Name)=> setUser(Name));
 
     const getAllProducts = async() => {
-        const {data} = await axios.get('/api/v1/cart');
-        console.log(data);
+        const {data} = await axios.get('/api/v1/cart'); //get cart items from database
+
+        // if cart have items
         if(data.productArray){
-        setProducts(data.productArray)
+          let count = 0;
+          for (let index = 0; index < data.productArray.length; index++) {
+            count += data.productArray[index].count;
+          }
+        setProducts(data.productArray) // update state of cart items
+        dispatch(cartItemCount(count)) // update cart total items numbery
+
         }
     }
-    // console.log(user);
 
     useEffect(()=>{
         getAllProducts();
@@ -36,7 +42,7 @@ let totalPrice = 0;
 if(products){
     products.map((item,i)=>(
 
-        totalPrice += Math.floor(item.price-(item.price/item.discountPercentage))
+        totalPrice += (Math.floor(item.price-(item.price/item.discountPercentage)))*item.count
     ))
 }
 

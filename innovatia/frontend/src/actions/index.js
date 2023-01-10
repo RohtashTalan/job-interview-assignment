@@ -2,12 +2,23 @@
 export const addToCart = (productId) => {
     return {
     type: "ADD_TO_CART",
-    payload: productId
+    payload: {
+        productId
+    }
 }}
 export const removeFromCart = (productId) => {
     return { 
         type: "REMOVE_FROM_CART",
-        payload: productId
+        payload: {
+        productId
+    }
+}}
+export const cartItemCount = (count = 0) => {
+    return { 
+        type: "CART_ITEM_COUNT",
+        payload: {
+        count
+    }
 }}
 
 
