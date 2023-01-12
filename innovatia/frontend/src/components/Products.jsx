@@ -11,7 +11,7 @@ const Products = () =>{
     const dispatch = useDispatch();
 
     const getAllProducts = async() => {
-        const {data} = await axios.get('/api/v1/product');
+        const {data} = await axios.get('http://194.195.114.47:4000/api/v1/product');
         if(data.products){
         setProducts(data.products)
         }

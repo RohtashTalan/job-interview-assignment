@@ -22,7 +22,7 @@ const Header = () =>{
     <nav className="bg-gray-900 text-white p-4">
         <div className="flex justify-between text-3xl">
             <div>
-       <a  onClick={()=>{navigate('/')}} >Logo </a>
+       <a className="hover:cursor-pointer" onClick={()=>{navigate('/')}} >Logo </a>
         </div>
 
          <div className="flex justify-center items-center">

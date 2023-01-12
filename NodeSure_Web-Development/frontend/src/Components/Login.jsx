@@ -12,6 +12,7 @@ const LoginUser = () =>{
     const signInUser = async () => {
 try {
   await axios.post('/api/v1/users/login', user);
+  
   navigate('/')
 } catch (error) {
         setLoginError(error.response.data);

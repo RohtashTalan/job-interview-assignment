@@ -8,7 +8,7 @@ const LoginUser = () =>{
     const [user, setUser] = useState();
 
     const signInUser = async () => {
-        const response = await axios.post("/api/v1/user/signin", user);
+        const response = await axios.post("http://194.195.114.47:4000/api/v1/user/signin", user);
         console.log(response);
         if(response.status === 200){
           window.location.pathname='/';

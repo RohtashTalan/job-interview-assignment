@@ -7,7 +7,7 @@ const SignUpUser = () =>{
     const [user, setUser] = useState();
 
     const signUp = async () => {
-      const response = await axios.post("/api/v1/user/signup", user);
+      const response = await axios.post("http://194.195.114.47:4000/api/v1/user/signup", user);
       console.log(response);
       if(response.status === 200){
         window.location.pathname='/';
@@ -25,7 +25,7 @@ const SignUpUser = () =>{
     }
     return(<>
     <Header />
-        <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="min-h-full flex flex-col justify-center py-32 sm:px-6 lg:px-8">
           <div className="text-center text-2xl font-bold">Sign up</div>
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">

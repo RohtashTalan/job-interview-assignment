@@ -11,12 +11,12 @@ const userStatus = async (state = initialState, action) => {
 
   switch (action.type) {
     case "SIGN_OUT_USER": {
-        const response = await axios.get("/api/v1/user/signout");
-        if(response.status === 200){return "Guest"}else{return "Guest"}
-        
+        const response = await axios.get("http://194.195.114.47:4000/api/v1/user/signout");
+        if(response.status === 200){return "Guest"}
+        return "Guest"
     }
     case "SIGN_IN_USER": {
-        const response = await axios.post("/api/v1/user/signin", action.payload);
+        const response = await axios.post("http://194.195.114.47:4000/api/v1/user/signin", action.payload);
         console.log(response);
         if(response.status === 200){
           return response.data.user}
@@ -24,7 +24,7 @@ const userStatus = async (state = initialState, action) => {
         
     }
     case "SIGN_UP_USER": {
-        const response = await axios.post("/api/v1/user/signup", action.payload);
+        const response = await axios.post("http://194.195.114.47:4000/api/v1/user/signup", action.payload);
         console.log(response);
         if(response.status === 200){
 
@@ -33,7 +33,7 @@ const userStatus = async (state = initialState, action) => {
         
     }
     default: {
-        const response = await axios.get("/api/v1/user/isloggedin");
+        const response = await axios.get("http://194.195.114.47:4000/api/v1/user/isloggedin");
         if(response.status === 200){return response.data.user}
         return "Guest"
     }
